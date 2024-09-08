@@ -5,12 +5,14 @@ class TaskManager:
     def __init__(self):
         self.tasks = []
 
+    def add_task(self, task):
+        self.tasks.append(task)
 
     def remove_task(self):
-        task_name = input("Please enter the name of the task you would like to remove: ")
+        task_name = input("Please enter the name of the task you would like to remove: ").upper()
 
         for task in self.tasks:
-            if task_name.upper() == task.name:
+            if task_name == task.name:
                 self.tasks.remove(task)
             else:
                 print("The task name provided doesn't exist.")
@@ -40,14 +42,16 @@ class TaskManager:
                     task.description = new_description.upper()
                     print("The description of the task has been changed successfully")
                 elif choice == 3:
-                    new_priority = input("Please enter the new name for the task(low/medium/high): ")
-                    if new_priority.lower() != "low" or new_priority != "medium" or new_priority != "high":
-                        print("Invalid input")
+                    new_priority = input("Please enter the new priority for the task (low/medium/high): ").lower()
+                    if new_priority not in ["low", "medium", "high"]:
+                        print("Invalid input. Please enter 'low', 'medium', or 'high'.")
                     else:
                         task.priority = new_priority.upper()
                         print("The name of the task has been changed successfully")
                 elif choice == 4:
                     task.update_status()
+                else:
+                    print("Invalid option!")
 
     def find_task(self):
 
@@ -60,7 +64,7 @@ class TaskManager:
     def new_task(self):
 
         task_name = input("Enter task name: ")
-        task_description = input("Enter task description")
+        task_description = input("Enter task description: ")
         task_priority = input("Enter task priority(low/medium/high): ")
         if task_priority.lower() != "low" or task_priority != "medium" or task_priority != "high":
             print("Invalid input")

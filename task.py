@@ -1,7 +1,7 @@
 class Task:
 
     def __init__(self, name_init="Unnamed Task", description_init="No description provided",priority="low"):
-        if priority.lower() != "low" or priority != "medium" or priority != "high":
+        if priority.lower() not in ["low", "medium", "high"]:
             print("Invalid priority input")
         self.priority = priority
         self.name = name_init.upper()
