@@ -1,13 +1,12 @@
+from task import Task
+
 class TaskManager:
 
     def __init__(self):
         self.tasks = []
 
-    def add_task(self, task):
-        self.tasks.append(task)
 
     def remove_task(self):
-
         task_name = input("Please enter the name of the task you would like to remove: ")
 
         for task in self.tasks:
@@ -57,6 +56,18 @@ class TaskManager:
         for task in self.tasks:
             if task_name.upper() == task.name:
                 print(task)
+
+    def new_task(self):
+
+        task_name = input("Enter task name: ")
+        task_description = input("Enter task description")
+        task_priority = input("Enter task priority(low/medium/high): ")
+        if task_priority.lower() != "low" or task_priority != "medium" or task_priority != "high":
+            print("Invalid input")
+
+        new_task_ = Task(task_name,task_description,task_priority)
+
+        self.tasks.append(new_task_)
 
 
 
