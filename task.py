@@ -1,10 +1,10 @@
 class Task:
 
-    def __init__(self, name_init="Unnamed Task", description_init="No description provided",priority="low", status=False):
+    def __init__(self, name_init="Unnamed Task", description_init="No description provided",priority="low"):
         self.name = name_init
         self.description = description_init
         self.priority = priority
-        self.status = status
+        self.status = False
 
     def updateStatus(self):
 
@@ -16,6 +16,11 @@ class Task:
             self.status = True
         else:
             print("Invalid option")
+
+    def __str__(self):
+
+        return f"Task: {self.name}\nPriority: {self.priority}\nStatus: {self.status}\n Description: {self.description}"
+
 
 
 
