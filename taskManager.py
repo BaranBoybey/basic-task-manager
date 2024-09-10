@@ -14,8 +14,10 @@ class TaskManager:
         for task in self.tasks:
             if task_name == task.name:
                 self.tasks.remove(task)
-            else:
-                print("The task name provided doesn't exist.")
+                print(f"Task '{task_name}' has been removed.")
+                return
+
+        print("The task name provided doesn't exist.")
 
     def view_tasks(self):
 
@@ -53,6 +55,8 @@ class TaskManager:
                 else:
                     print("Invalid option!")
 
+        print("The task name provided doesn't exist")
+
     def find_task(self):
 
         task_name = input("Please enter the task name to obtain details: ")
@@ -66,9 +70,9 @@ class TaskManager:
         task_name = input("Enter task name: ")
         task_description = input("Enter task description: ")
         task_priority = input("Enter task priority(low/medium/high): ")
-        if task_priority.lower() != "low" or task_priority != "medium" or task_priority != "high":
+        if task_priority.lower() not in ["low", "medium", "high"]:
             print("Invalid input")
-
+            return
         new_task_ = Task(task_name,task_description,task_priority)
 
         self.tasks.append(new_task_)
