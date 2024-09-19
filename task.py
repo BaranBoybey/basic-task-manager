@@ -22,9 +22,15 @@ class Task:
         else:
             print("Invalid option")
 
+    def get_status(self):
+        if self.status:
+            return"Completed"
+        elif not self.status:
+            return "Incomplete"
+
     def __str__(self):
 
-        return f"Task: {self.name}\nPriority: {self.priority}\nStatus: {self.status}\n Description: {self.description}"
+        return f"Task: {self.name}\nPriority: {self.priority}\nStatus: {self.get_status()} \n Description: {self.description}"
 
 
 

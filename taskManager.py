@@ -39,21 +39,26 @@ class TaskManager:
                     new_name = input("Please enter the new name for the task: ")
                     task.name = new_name.upper()
                     print("The name of the task has been changed successfully")
+                    return
                 elif choice == 2:
                     new_description = input("Please enter the new description for the task: ")
                     task.description = new_description.upper()
                     print("The description of the task has been changed successfully")
+                    return
                 elif choice == 3:
                     new_priority = input("Please enter the new priority for the task (low/medium/high): ").lower()
                     if new_priority not in ["low", "medium", "high"]:
                         print("Invalid input. Please enter 'low', 'medium', or 'high'.")
                     else:
                         task.priority = new_priority.upper()
-                        print("The name of the task has been changed successfully")
+                        print("The priority of the task has been changed successfully")
+                        return
                 elif choice == 4:
                     task.update_status()
+                    return
                 else:
                     print("Invalid option!")
+                    return
 
         print("The task name provided doesn't exist")
 
@@ -76,6 +81,9 @@ class TaskManager:
         new_task_ = Task(task_name,task_description,task_priority)
 
         self.tasks.append(new_task_)
+
+        print(f"The new task '{task_name}' has been created.")
+        return
 
 
 
